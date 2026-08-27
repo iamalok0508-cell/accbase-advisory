@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const steps = [
+  ['01', 'Discovery call', 'Onboarding, week 1', 'Thirty minutes to understand your books, your systems, your close calendar and where the friction is. No obligation and no pitch.'],
+  ['02', 'Requirements review', 'Onboarding, week 1', 'We review your chart of accounts, current reporting and transaction volume, then scope the work and quote a fixed fee.'],
+  ['03', 'Process mapping', 'Onboarding, week 2', 'Every routine gets documented: who approves what, which reports go where, what the close checklist looks like.'],
+  ['04', 'Knowledge transfer', 'Onboarding, week 3', 'Access is granted under NDA, your named contact is introduced, and we run one cycle alongside your existing process before taking over.'],
+  ['05', 'Daily operations', 'Steady state', 'Transactions processed as they arrive, AP and AR run to schedule, reconciliations kept current rather than caught up.'],
+  ['06', 'Monthly reporting', 'Steady state', 'The close runs to the agreed date. Your reporting pack arrives without you asking for it.'],
+  ['07', 'Continuous improvement', 'Steady state', 'Quarterly reviews of what is still manual, what could be automated, and what the reporting pack is missing.'],
+];
+
+const security = [
+  ['Access control', 'Named individuals only, least-privilege access, and immediate revocation when someone rolls off the account.'],
+  ['NDAs', 'Signed by the firm and by every individual who touches your data.'],
+  ['Audited handling', 'Data access is logged. We can produce the log if your auditor asks for it.'],
+  ['No local copies', 'Work happens inside your systems. Financial data is not downloaded to personal machines.'],
+];
+---
+<BaseLayout
+  title="How we work"
+  description="Our onboarding runs three weeks: discovery, requirements review, process mapping and knowledge transfer. Then a fixed monthly close calendar and reporting you can plan around."
+>
+  <PageHero
+    eyebrow="How we work"
+    title="Three weeks to onboard. Then a calendar you can plan around."
+    lede="A named point of contact stays with your account throughout, and it is the same person you meet on the discovery call."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <ol class="steps">
+        {steps.map(([num, title, phase, copy]) => (
+          <li class="step">
+            <div class="step-meta">
+              <span class="marker">{num}</span>
+              <span class="step-phase">{phase}</span>
+            </div>
+            <div class="step-body">
+              <h2 class="h-card">{title}</h2>
+              <p>{copy}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Security &amp; confidentiality</p>
+          <h2 class="h-section">How your data is handled</h2>
+          <p class="lede">Offshore only works if the security question has a clear answer. Here is ours.</p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        {security.map(([title, copy]) => (
+          <div class="cell">
+            <h3 class="h-card">{title}</h3>
+            <p>{copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Technology</p>
+          <h2 class="h-section">We work inside your stack</h2>
+          <p class="lede">No migration, no new licences, no asking your team to learn another tool. If you already run something not on this list, tell us on the call.</p>
+        </div>
+      </div>
+      <ul class="stack-list">
+        {['QuickBooks', 'Xero', 'NetSuite', 'Zoho Books', 'Sage', 'Bill.com', 'Gusto', 'ADP', 'Expensify', 'Ramp', 'Excel', 'Google Sheets', 'Power BI', 'Dext / Hubdoc'].map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+  .step {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .step-meta { display: flex; flex-direction: column; gap: 0.6rem; }
+  .step-phase { font-size: 0.8125rem; color: var(--ink-2); opacity: 0.75; }
+  .step-body p { margin: 0.6rem 0 0; max-width: 62ch; }
+  @media (max-width: 700px) {
+    .step { grid-template-columns: 1fr; gap: 0.75rem; }
+    .step-meta { flex-direction: row; align-items: baseline; gap: 1rem; }
+  }
+  .stack-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .stack-list li {
+    font-family: var(--display); font-weight: 600; font-size: 0.9375rem;
+    letter-spacing: -0.01em; color: var(--ink);
+    border: 1px solid var(--rule-strong); padding: 0.7rem 1.15rem; border-radius: 2px;
+  }
+</style>

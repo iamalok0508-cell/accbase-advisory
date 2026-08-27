@@ -1,0 +1,129 @@
+---
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/services/', label: 'Services' },
+  { href: '/industries/', label: 'Industries' },
+  { href: '/how-we-work/', label: 'How we work' },
+  { href: '/about/', label: 'About' },
+  { href: '/insights/', label: 'Insights' },
+];
+const isActive = (href) => path === href || (href !== '/' && path.startsWith(href));
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="Accbase Advisory home">
+      <svg class="brand-mark" viewBox="0 0 48 44" aria-hidden="true" focusable="false">
+        <path d="M24 2 L46 42 H36 L24 19 L12 42 H2 Z" fill="#2A1E12" />
+        <path d="M15 22 H33 L37 30 H11 Z" fill="#C39A5C" />
+      </svg>
+      <span class="brand-name">Accbase Advisory</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-button" aria-label="Toggle navigation">
+      <span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Main">
+      {nav.map((item) => (
+        <a href={item.href} class:list={['nav-link', { 'is-active': isActive(item.href) }]}>
+          {item.label}
+        </a>
+      ))}
+      <a class="btn btn--primary nav-cta" href="/contact/">Book a discovery call</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(246, 243, 238, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 78px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .brand-mark { width: 28px; height: auto; }
+  .brand-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.0625rem;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.2vw, 2rem);
+  }
+
+  .nav-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--ink); border-bottom-color: var(--gold); }
+  .nav-link.is-active { color: var(--ink); border-bottom-color: var(--bronze); }
+
+  .nav-cta { padding: 0.7rem 1.2rem; font-size: 0.875rem; }
+
+  .nav-toggle { display: none; }
+  .nav-button { display: none; }
+
+  @media (max-width: 980px) {
+    .nav-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      padding: 0 6px;
+    }
+    .nav-button span {
+      display: block;
+      height: 1.5px;
+      background: var(--ink);
+    }
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 0.5rem var(--gutter) 1.5rem;
+    }
+    .nav-toggle:checked ~ .site-nav { display: flex; }
+    .nav-link { padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+    .nav-cta { margin-top: 1.25rem; justify-content: center; }
+  }
+</style>

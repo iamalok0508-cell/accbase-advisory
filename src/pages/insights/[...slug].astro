@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('insights', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={post.data.title} description={post.data.description} ogType="article">
+  <article>
+    <header class="article-head">
+      <div class="wrap">
+        <p class="eyebrow">{post.data.category}</p>
+        <h1 class="h-section article-title">{post.data.title}</h1>
+        <p class="article-meta">
+          <time datetime={post.data.date.toISOString()}>{fmt}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{post.data.author}</span>
+        </p>
+      </div>
+    </header>
+    <div class="section">
+      <div class="wrap">
+        <div class="prose"><Content /></div>
+        <aside class="article-cta">
+          <h2 class="h-card">Books more than a month behind?</h2>
+          <p>A 30-minute discovery call, no obligation. We'll tell you honestly whether we're the right fit.</p>
+          <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-head { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--rule); }
+  .article-head .eyebrow { margin-bottom: 1.5rem; }
+  .article-title { max-width: 22ch; }
+  .article-meta { display: flex; gap: 0.6rem; font-size: 0.875rem; margin: 1.5rem 0 0; opacity: 0.8; }
+  .article-cta {
+    max-width: 68ch; margin-top: clamp(3rem, 6vw, 4.5rem);
+    border-top: 2px solid var(--ink); padding-top: 1.75rem;
+  }
+  .article-cta p { margin: 0.75rem 0 1.5rem; }
+</style>

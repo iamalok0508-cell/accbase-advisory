@@ -1,0 +1,20 @@
+---
+const { eyebrow, title, lede } = Astro.props;
+---
+<section class="page-hero">
+  <div class="wrap">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1 class="h-section page-title">{title}</h1>
+    {lede && <p class="lede page-lede">{lede}</p>}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .page-hero .eyebrow { margin-bottom: 1.5rem; }
+  .page-title { max-width: 22ch; }
+  .page-lede { margin: 1.75rem 0 0; max-width: 56ch; }
+</style>

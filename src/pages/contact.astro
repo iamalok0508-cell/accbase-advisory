@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<BaseLayout
+  title="Book a discovery call"
+  description="A 30-minute call to understand your books, your close calendar and where the friction is. No obligation and no pitch."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Book a discovery call."
+    lede="Thirty minutes. We'll ask about your systems, your transaction volume and your close calendar, then tell you honestly whether we're the right fit."
+  />
+
+  <section class="section">
+    <div class="wrap contact-grid">
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY" />
+        <input type="hidden" name="subject" value="New enquiry from accbaseadvisory.com" />
+        <input type="hidden" name="from_name" value="Accbase Advisory website" />
+        <input type="hidden" name="redirect" value="https://www.accbaseadvisory.com/thanks/" />
+        <p class="hp"><label>Don't fill this in <input name="botcheck" tabindex="-1" autocomplete="off" /></label></p>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="system">Accounting system</label>
+            <select id="system" name="system">
+              <option value="">Select one</option>
+              <option>QuickBooks</option>
+              <option>Xero</option>
+              <option>NetSuite</option>
+              <option>Sage</option>
+              <option>Zoho Books</option>
+              <option>Spreadsheets only</option>
+              <option>Something else</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="need">What do you need help with?</label>
+          <select id="need" name="need">
+            <option value="">Select one</option>
+            <option>Ongoing bookkeeping and monthly close</option>
+            <option>Financial reporting and MIS</option>
+            <option>Payroll and compliance</option>
+            <option>Budgeting, forecasting and FP&A</option>
+            <option>A backlog clean-up or audit preparation</option>
+            <option>A dedicated offshore finance team</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Anything else we should know?</label>
+          <textarea id="message" name="message" rows="5" placeholder="How far behind are the books, roughly how many transactions a month, and when you need this sorted."></textarea>
+        </div>
+
+        <button class="btn btn--primary" type="submit">Send and book a call</button>
+        <p class="form-note">We reply within one business day. Your details are never shared or sold.</p>
+      </form>
+
+      <aside class="contact-side">
+        <dl>
+          <div><dt>Email</dt><dd><a href="mailto:info@accbaseadvisory.com">info@accbaseadvisory.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+919035918976">+91 90359 18976</a></dd></div>
+          <div><dt>Hours</dt><dd>Monday to Friday, overlapping US business hours</dd></div>
+        </dl>
+        <div class="side-note">
+          <h2 class="h-card">What happens next</h2>
+          <ol class="tick-list">
+            <li>We reply within one business day to find a time.</li>
+            <li>A 30-minute call about your books and your calendar.</li>
+            <li>A written scope and a fixed monthly fee, usually within three days.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .hp { position: absolute; left: -9999px; }
+  .field { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bronze); }
+  input, select, textarea {
+    font-family: var(--body); font-size: 1rem; color: var(--ink);
+    background: transparent; border: 1px solid var(--rule-strong); border-radius: 2px;
+    padding: 0.85rem 1rem; width: 100%;
+  }
+  textarea { resize: vertical; }
+  input:focus, select:focus, textarea:focus { border-color: var(--bronze); }
+  button[type="submit"] { border: 0; cursor: pointer; margin-top: 0.5rem; }
+  .form-note { font-size: 0.8125rem; margin: 1.25rem 0 0; opacity: 0.8; }
+  .contact-side dl { margin: 0 0 2.5rem; display: grid; gap: 1.5rem; border-top: 2px solid var(--ink); padding-top: 1.5rem; }
+  .contact-side dt { font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.4rem; }
+  .contact-side dd { margin: 0; }
+  .contact-side a { color: var(--ink); text-underline-offset: 3px; }
+  .side-note { border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+  .side-note .tick-list { counter-reset: n; }
+  .side-note li { padding-left: 0; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; gap: 0; } }
+</style>

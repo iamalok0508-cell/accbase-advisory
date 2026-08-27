@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const founders = [
+  {
+    name: 'Founder name',
+    role: 'Co-founder — Accounting & Operations',
+    bio: 'Two lines: qualification, years in practice, and the engagements you have led.',
+  },
+  {
+    name: 'Founder name',
+    role: 'Co-founder — Reporting & Advisory',
+    bio: 'Two lines: qualification, years in practice, and the engagements you have led.',
+  },
+];
+
+const values = [
+  ['Expertise', 'Chartered and semi-qualified accountants doing accounting work, not data entry dressed up as it.'],
+  ['Integrity', 'We tell you when the numbers are wrong, including when they are wrong because of us.'],
+  ['Client-first', 'We work to your calendar and your systems, not the other way round.'],
+];
+---
+<BaseLayout
+  title="About Accbase Advisory"
+  description="Accbase Advisory is an offshore accounting and financial advisory firm helping US businesses run accurate books, report on time, and scale their finance function without scaling headcount."
+>
+  <PageHero
+    eyebrow="About"
+    title="An offshore finance team built to work like an in-house one."
+    lede="Accbase Advisory helps US businesses run accurate books, report on time, and scale their finance function without scaling headcount."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="mission">
+        Our mission is to give businesses reliable, accurate and scalable accounting &mdash;
+        simplifying financial operations and enabling informed decisions through
+        expertise, integrity and a client-first approach.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">Meet the founders</p><h2 class="h-section">Who you'll be working with</h2></div></div>
+      <div class="grid grid-2">
+        {founders.map((f) => (
+          <div class="cell founder">
+            <div class="founder-photo" aria-hidden="true"></div>
+            <div>
+              <h3 class="h-card">{f.name}</h3>
+              <p class="founder-role">{f.role}</p>
+              <p>{f.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">How we operate</p><h2 class="h-section">Three things we hold to</h2></div></div>
+      <div class="grid grid-3">
+        {values.map(([title, copy]) => (
+          <div class="cell"><h3 class="h-card">{title}</h3><p>{copy}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .mission {
+    font-family: var(--display);
+    font-size: clamp(1.375rem, 3vw, 2.25rem);
+    font-weight: 500; line-height: 1.32; letter-spacing: -0.024em;
+    color: var(--ink); max-width: 30ch; margin: 0;
+    padding-left: clamp(1rem, 3vw, 2.5rem); border-left: 2px solid var(--gold);
+  }
+  .founder { flex-direction: row; gap: 1.5rem; align-items: flex-start; }
+  .founder-photo {
+    width: 104px; flex: 0 0 104px; aspect-ratio: 3 / 4;
+    background: var(--paper); border: 1px dashed var(--rule-strong);
+  }
+  .founder-role { color: var(--bronze); font-weight: 600; font-size: 0.875rem; margin: 0.35rem 0 0.75rem; }
+  @media (max-width: 520px) { .founder { flex-direction: column; } }
+</style>

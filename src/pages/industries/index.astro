@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { industries } from '../../data/site.js';
+---
+<BaseLayout
+  title="Industries we serve"
+  description="Outsourced accounting for SaaS and technology, e-commerce and retail, professional services and healthcare businesses in the United States."
+>
+  <PageHero
+    eyebrow="Industries"
+    title="Books that reflect how your business actually works."
+    lede="Generic bookkeeping breaks at the edges: deferred revenue, marketplace settlements, work-in-progress, payer remittances. These are the sectors where we know those edges well."
+  />
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-2">
+        {industries.map((i) => (
+          <a class="cell cell--link" href={`/industries/${i.slug}/`}>
+            <h2 class="h-card">{i.title}</h2>
+            <p>{i.tagline}</p>
+            <span class="cell-more">Read more</span>
+          </a>
+        ))}
+      </div>
+      <p class="footnote">Not on the list? Product and service businesses alike come to us. If the books close monthly, we can run them.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cell--link { text-decoration: none; transition: background 160ms ease; }
+  .cell--link:hover { background: var(--sand); }
+  .cell-more { margin-top: auto; padding-top: 1.25rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; color: var(--bronze); }
+  .footnote { margin: 2.5rem 0 0; max-width: 60ch; font-size: 0.9375rem; }
+</style>

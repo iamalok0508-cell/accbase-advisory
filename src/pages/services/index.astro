@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { services } from '../../data/site.js';
+
+const models = [
+  ['01', 'Dedicated resource', 'One accountant works exclusively for you, in your systems and your hours.', 'A business with no finance hire yet.'],
+  ['02', 'Shared team', 'Several specialists cover your books, payroll and reporting between them.', 'Mixed workload, variable volume.'],
+  ['03', 'Project based', 'Clean-ups, migrations, backlog closes and audit preparation with a fixed scope.', 'A one-off backlog or an audit deadline.'],
+  ['04', 'Monthly retainer', 'Ongoing accounting support at a fixed monthly fee. Our most common engagement.', 'Predictable monthly close and reporting.'],
+];
+---
+<BaseLayout
+  title="Outsourced accounting services for US businesses"
+  description="Bookkeeping, financial reporting, payroll and compliance, FP&A and dedicated offshore finance teams for US businesses. Five service lines, four ways to engage."
+>
+  <PageHero
+    eyebrow="Services"
+    title="Everything a finance function needs, minus the headcount."
+    lede="Five service lines covering bookkeeping through to FP&A. Take one, or take all of them, on whichever engagement model fits."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-2">
+        {services.map((s) => (
+          <a class="cell cell--link" href={`/services/${s.slug}/`}>
+            <h2 class="h-card">{s.title}</h2>
+            <p>{s.tagline}</p>
+            <span class="cell-more">Read more</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Engagement models</p>
+          <h2 class="h-section">Four ways to engage</h2>
+          <p class="lede">Pricing depends on transaction volume and how many service lines you need. We quote after the discovery call, not before.</p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        {models.map(([num, title, copy, best]) => (
+          <div class="cell">
+            <span class="marker">{`Model ${num}`}</span>
+            <h3 class="h-card">{title}</h3>
+            <p>{copy}</p>
+            <p class="best-for"><strong>Best for:</strong> {best}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cell--link { text-decoration: none; transition: background 160ms ease; }
+  .cell--link:hover { background: var(--sand); }
+  .cell-more { margin-top: auto; padding-top: 1.25rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; color: var(--bronze); }
+  .best-for { font-size: 0.875rem; }
+  .best-for strong { color: var(--ink); font-weight: 600; }
+</style>

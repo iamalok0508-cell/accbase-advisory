@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/accbase-advisory
+  branch: main
+  base_url: https://YOUR-AUTH-WORKER.workers.dev
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "insights"
+    label: "Insights articles"
+    folder: "src/content/insights"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta description", name: "description", widget: "text", hint: "One or two sentences. This is what shows in Google results." }
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Accbase Advisory" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Close process", "Financial reporting", "Payroll & compliance", "FP&A", "Working with us", "Industry notes"]
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, hint: "Leave on until you're ready to publish." }
+      - { label: "Body", name: "body", widget: "markdown" }

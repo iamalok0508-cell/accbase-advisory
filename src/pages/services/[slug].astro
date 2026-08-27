@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { services } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const others = services.filter((s) => s.slug !== service.slug);
+---
+<BaseLayout title={service.title} description={service.description}>
+  <PageHero eyebrow="Services" title={service.title} lede={service.tagline} />
+
+  <section class="section">
+    <div class="wrap detail">
+      <div class="prose">
+        {service.body.map((p) => <p>{p}</p>)}
+        <p class="good"><strong>Usually a good fit for:</strong> {service.good}</p>
+        <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+      </div>
+      <aside class="includes">
+        <h2 class="eyebrow">What's included</h2>
+        <ul class="tick-list">
+          {service.includes.map((item) => <li>{item}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head"><div><h2 class="h-section">Other services</h2></div></div>
+      <div class="grid grid-2">
+        {others.map((s) => (
+          <a class="cell cell--link" href={`/services/${s.slug}/`}>
+            <h3 class="h-card">{s.title}</h3>
+            <p>{s.tagline}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .detail { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .includes { border-top: 2px solid var(--ink); padding-top: 1.5rem; position: sticky; top: 110px; }
+  .includes .eyebrow { margin-bottom: 0.5rem; }
+  .good { padding: 1.25rem 0 1.5rem; border-top: 1px solid var(--rule); }
+  .good strong { color: var(--ink); }
+  .cell--link { text-decoration: none; }
+  .cell--link:hover { background: var(--paper); }
+  @media (max-width: 860px) {
+    .detail { grid-template-columns: 1fr; }
+    .includes { position: static; }
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<BaseLayout title="Thanks — we'll be in touch" description="Your enquiry has reached Accbase Advisory.">
+  <PageHero
+    eyebrow="Enquiry received"
+    title="Thanks. We'll come back to you within one business day."
+    lede="If it's urgent, email info@accbaseadvisory.com or call +91 90359 18976 directly."
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <p>While you wait, two things worth reading:</p>
+      <ul>
+        <li><a href="/insights/offshore-finance-team-questions/">Nine questions to ask before hiring an offshore finance team</a> — including the ones that are awkward for us to answer.</li>
+        <li><a href="/how-we-work/">How we work</a> — what the three-week onboarding actually involves.</li>
+      </ul>
+      <a class="btn btn--ghost" href="/">Back to the homepage</a>
+    </div>
+  </section>
+</BaseLayout>

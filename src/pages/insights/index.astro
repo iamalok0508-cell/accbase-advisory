@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('insights', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout
+  title="Insights"
+  description="Practical writing on bookkeeping, month-end close, financial reporting and working with an offshore finance team."
+>
+  <PageHero
+    eyebrow="Insights"
+    title="Notes from inside other people's books."
+    lede="Practical writing on close processes, reporting and what actually goes wrong in a growing finance function."
+  />
+  <section class="section">
+    <div class="wrap">
+      {posts.length === 0 ? (
+        <p class="empty">No articles published yet. The first one is being written.</p>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li class="post-item">
+              <a href={`/insights/${post.id}/`}>
+                <div class="post-meta">
+                  <span class="marker">{post.data.category}</span>
+                  <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+                </div>
+                <div>
+                  <h2 class="h-card post-title">{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .post-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+  .post-item { border-bottom: 1px solid var(--rule); }
+  .post-item a {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+    text-decoration: none;
+  }
+  .post-item a:hover .post-title { color: var(--bronze); }
+  .post-meta { display: flex; flex-direction: column; gap: 0.5rem; }
+  .post-meta time { font-size: 0.8125rem; opacity: 0.75; }
+  .post-item p { margin: 0.6rem 0 0; max-width: 62ch; }
+  .post-title { transition: color 140ms ease; }
+  .empty { font-size: 1.0625rem; }
+  @media (max-width: 700px) {
+    .post-item a { grid-template-columns: 1fr; gap: 0.75rem; }
+    .post-meta { flex-direction: row; align-items: baseline; gap: 1rem; }
+  }
+</style>

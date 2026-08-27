@@ -1,0 +1,492 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ledger = [
+  {
+    problem: 'Cost of in-house staff',
+    problemDetail: 'Salaries, benefits and tooling for a full local finance team.',
+    solution: 'A qualified offshore team',
+    solutionDetail: 'Chartered and semi-qualified accountants at a fraction of US cost.',
+  },
+  {
+    problem: 'Late month-end close',
+    problemDetail: 'Numbers arrive after the decisions have already been made.',
+    solution: 'A fixed close calendar',
+    solutionDetail: 'Management reports in your inbox every month, on date.',
+  },
+  {
+    problem: 'Manual bookkeeping',
+    problemDetail: 'Spreadsheets doing work the accounting stack should be doing.',
+    solution: 'Documented workflows',
+    solutionDetail: 'Automated capture, reconciliations and approval routing.',
+  },
+  {
+    problem: 'Compliance exposure',
+    problemDetail: 'Filings and auditor requests handled reactively, under pressure.',
+    solution: 'Audit-ready records',
+    solutionDetail: 'Documentation, filings and audit support handled year-round.',
+  },
+];
+
+const services = [
+  {
+    slug: 'accounting-bookkeeping',
+    title: 'Accounting & bookkeeping',
+    copy: 'Daily transaction processing, general ledger, AP and AR, reconciliations and month-end close.',
+  },
+  {
+    slug: 'financial-reporting',
+    title: 'Financial reporting',
+    copy: 'Financial statements, MIS packs, cash-flow reporting and KPI dashboards on a fixed calendar.',
+  },
+  {
+    slug: 'payroll-compliance',
+    title: 'Payroll & compliance',
+    copy: 'Payroll processing, financial documentation, compliance reporting and audit support.',
+  },
+  {
+    slug: 'advisory-fpa',
+    title: 'Advisory & FP&A',
+    copy: 'Budgeting, forecasting, cash-flow planning and the analysis behind real decisions.',
+  },
+  {
+    slug: 'offshore-finance-teams',
+    title: 'Offshore finance teams',
+    copy: 'A dedicated team inside your finance operation, with process improvement built in.',
+  },
+];
+
+const differentiators = [
+  ['Qualified professionals', 'Chartered and semi-qualified accountants, not data-entry staff.'],
+  ['Cost-effective delivery', 'Offshore rates for onshore standards of work.'],
+  ['On-schedule reporting', 'A close calendar you can plan board meetings around.'],
+  ['Scales with you', 'Add capacity in weeks, not hiring cycles.'],
+  ['Security & confidentiality', 'Access controls, NDAs and audited handling of your data.'],
+  ['Process-driven', 'Every routine documented, so nothing depends on one person.'],
+];
+
+const models = [
+  ['01', 'Dedicated resource', 'One accountant works exclusively for you, in your systems and your hours.', 'A business with no finance hire yet.'],
+  ['02', 'Shared team', 'Several specialists cover your books, payroll and reporting between them.', 'Mixed workload, variable volume.'],
+  ['03', 'Project based', 'Clean-ups, migrations, backlog closes and audit preparation with a fixed scope.', 'A one-off backlog or an audit deadline.'],
+  ['04', 'Monthly retainer', 'Ongoing accounting support at a fixed monthly fee. Our most common engagement.', 'Predictable monthly close and reporting.'],
+];
+
+const process = [
+  ['01', 'Discovery call', 'onboarding'],
+  ['02', 'Requirements review', 'onboarding'],
+  ['03', 'Process mapping', 'onboarding'],
+  ['04', 'Knowledge transfer', 'onboarding'],
+  ['05', 'Daily operations', 'steady'],
+  ['06', 'Monthly reporting', 'steady'],
+  ['07', 'Continuous improvement', 'steady'],
+];
+
+const stack = ['QuickBooks', 'Xero', 'NetSuite', 'Zoho Books', 'Sage', 'Bill.com', 'Gusto', 'Expensify', 'Excel', 'Google Sheets', 'Power BI', 'Dext / Hubdoc'];
+
+const industries = [
+  ['saas-technology', 'SaaS & technology'],
+  ['ecommerce-retail', 'E-commerce & retail'],
+  ['professional-services', 'Professional services'],
+  ['healthcare', 'Healthcare'],
+];
+---
+
+<BaseLayout
+  title="Accbase Advisory — Offshore accounting for US businesses"
+  description="Accbase Advisory runs bookkeeping, month-end close, financial reporting and FP&A for US businesses. A qualified offshore finance team on a fixed close calendar."
+>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Offshore accounting &amp; financial advisory</p>
+      <h1 class="h-display">
+        Your books, closed<br />on the same date<br />every month.
+      </h1>
+      <p class="lede hero-lede">
+        Accbase Advisory is an offshore finance team for US businesses. We run
+        bookkeeping through to FP&amp;A inside your existing systems, so your
+        numbers arrive before the decisions do.
+      </p>
+      <div class="btn-row hero-cta">
+        <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+        <a class="btn btn--ghost" href="/services/">See what we handle</a>
+      </div>
+      <dl class="hero-facts">
+        <div><dt>Close calendar</dt><dd>Fixed monthly date</dd></div>
+        <div><dt>Coverage</dt><dd>Overlapping US hours</dd></div>
+        <div><dt>Your stack</dt><dd>No migration required</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 1</p>
+          <h2 class="h-section">An extension of your team, not a vendor.</h2>
+          <p class="lede">
+            We work on your tools, in your reporting calendar, with a named point
+            of contact who stays with the account. Most clients come to us
+            carrying a finance function that has outgrown one bookkeeper but
+            can't yet justify a controller.
+          </p>
+        </div>
+      </div>
+      <p class="mission">
+        Our mission is to give businesses reliable, accurate and scalable
+        accounting &mdash; simplifying financial operations and enabling informed
+        decisions through expertise, integrity and a client-first approach.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 2</p>
+          <h2 class="h-section">Where finance teams struggle, and what we put in its place.</h2>
+        </div>
+      </div>
+
+      <div class="ledger" role="table" aria-label="Challenges and the Accbase solution">
+        <div class="ledger-head" role="row">
+          <span role="columnheader">The challenge</span>
+          <span role="columnheader">What Accbase does</span>
+        </div>
+        {ledger.map((row) => (
+          <div class="ledger-row" role="row">
+            <div class="ledger-cell ledger-cell--debit" role="cell">
+              <h3 class="h-card">{row.problem}</h3>
+              <p>{row.problemDetail}</p>
+            </div>
+            <div class="ledger-cell ledger-cell--credit" role="cell">
+              <h3 class="h-card">{row.solution}</h3>
+              <p>{row.solutionDetail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 3</p>
+          <h2 class="h-section">What we handle</h2>
+          <p class="lede">
+            Five service lines that cover a finance function end to end. Take one
+            or take all of them.
+          </p>
+        </div>
+        <a class="btn btn--ghost" href="/services/">All services</a>
+      </div>
+
+      <div class="grid grid-3">
+        {services.map((s) => (
+          <a class="cell cell--link" href={`/services/${s.slug}/`}>
+            <h3 class="h-card">{s.title}</h3>
+            <p>{s.copy}</p>
+            <span class="cell-more">Read more</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 4</p>
+          <h2 class="h-section">Why businesses stay with us</h2>
+        </div>
+      </div>
+      <div class="grid grid-3">
+        {differentiators.map(([title, copy], i) => (
+          <div class="cell">
+            <span class="marker">{`0${i + 1}`}</span>
+            <h3 class="h-card">{title}</h3>
+            <p>{copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 5</p>
+          <h2 class="h-section">Four ways to engage</h2>
+          <p class="lede">
+            Scope and pricing depend on transaction volume and how many of the
+            five service lines you need. We quote after the discovery call.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        {models.map(([num, title, copy, best]) => (
+          <div class="cell">
+            <span class="marker">{`Model ${num}`}</span>
+            <h3 class="h-card">{title}</h3>
+            <p>{copy}</p>
+            <p class="best-for"><strong>Best for:</strong> {best}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 6</p>
+          <h2 class="h-section">From first call to steady state</h2>
+          <p class="lede">
+            Onboarding runs three weeks. The named contact you meet on the
+            discovery call stays with your account afterwards.
+          </p>
+        </div>
+        <a class="btn btn--ghost" href="/how-we-work/">How we work</a>
+      </div>
+
+      <ol class="timeline">
+        {process.map(([num, label, phase]) => (
+          <li class:list={['timeline-step', `is-${phase}`]}>
+            <span class="marker">{num}</span>
+            <span class="timeline-label">{label}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="timeline-key">
+        <span><i class="key-dot key-dot--on"></i> Onboarding, weeks 1&ndash;3</span>
+        <span><i class="key-dot"></i> Steady state, month 1 onwards</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 7</p>
+          <h2 class="h-section">We work inside your stack</h2>
+          <p class="lede">No migration, no new licences, no asking your team to learn another tool.</p>
+        </div>
+      </div>
+      <ul class="stack-list">
+        {stack.map((tool) => <li>{tool}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="marker">0 8</p>
+          <h2 class="h-section">Industries we know well</h2>
+          <p class="lede">
+            Product and service businesses alike. If the books close monthly, we
+            can run them.
+          </p>
+        </div>
+        <a class="btn btn--ghost" href="/industries/">All industries</a>
+      </div>
+      <div class="grid grid-2">
+        {industries.map(([slug, name]) => (
+          <a class="cell cell--link" href={`/industries/${slug}/`}>
+            <h3 class="h-card">{name}</h3>
+            <span class="cell-more">Read more</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(4rem, 10vw, 9rem) clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-inner .eyebrow { margin-bottom: 2rem; }
+  .hero-lede { margin: 2rem 0 0; max-width: 52ch; }
+  .hero-cta { margin-top: 2.5rem; }
+
+  .hero-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: clamp(3rem, 6vw, 5rem) 0 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule-strong);
+    max-width: 720px;
+  }
+  .hero-facts dt {
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+  }
+  .hero-facts dd {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+
+  .mission {
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+    font-weight: 500;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 34ch;
+    margin: 0 0 0 auto;
+    padding-left: clamp(0rem, 4vw, 3rem);
+    border-left: 2px solid var(--gold);
+    text-wrap: pretty;
+  }
+
+  /* Signature: the T-account ledger */
+  .ledger { border-top: 2px solid var(--ink); }
+
+  .ledger-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .ledger-head span + span { padding-left: clamp(1rem, 4vw, 3rem); }
+
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ledger-cell { padding-block: clamp(1.75rem, 3vw, 2.5rem); }
+  .ledger-cell p { margin: 0.6rem 0 0; font-size: 0.9875rem; max-width: 40ch; }
+  .ledger-cell--debit { padding-right: clamp(1rem, 4vw, 3rem); }
+  .ledger-cell--debit h3 { color: var(--ink-2); opacity: 0.7; }
+  .ledger-cell--credit {
+    padding-left: clamp(1rem, 4vw, 3rem);
+    border-left: 1px solid var(--rule-strong);
+  }
+  .ledger-cell--credit h3 { color: var(--ink); }
+
+  @media (max-width: 700px) {
+    .ledger-head { grid-template-columns: 1fr; gap: 0; }
+    .ledger-head span + span { display: none; }
+    .ledger-row { grid-template-columns: 1fr; }
+    .ledger-cell--debit { padding-right: 0; padding-bottom: 1rem; }
+    .ledger-cell--credit {
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--gold);
+      padding-top: 0;
+      padding-bottom: 1.75rem;
+    }
+  }
+
+  .cell--link {
+    text-decoration: none;
+    transition: background 160ms ease;
+  }
+  .cell--link:hover { background: var(--sand); }
+  .section--sand .cell--link:hover { background: var(--paper); }
+  .cell-more {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--bronze);
+  }
+  .cell--link:hover .cell-more { color: var(--ink); }
+
+  .best-for { font-size: 0.875rem; color: var(--ink-2); opacity: 0.85; }
+  .best-for strong { color: var(--ink); font-weight: 600; }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-top: 1px solid var(--rule-strong);
+  }
+  .timeline-step {
+    padding: 1.5rem 1rem 1.5rem 0;
+    border-top: 3px solid var(--rule);
+    margin-top: -1px;
+  }
+  .timeline-step.is-onboarding { border-top-color: var(--gold); }
+  .timeline-step.is-steady { border-top-color: var(--ink); }
+  .timeline-step .marker { display: block; margin-bottom: 0.6rem; }
+  .timeline-label {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  .timeline-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin-top: 1.75rem;
+    font-size: 0.8125rem;
+  }
+  .timeline-key span { display: inline-flex; align-items: center; gap: 0.55rem; }
+  .key-dot {
+    width: 18px;
+    height: 3px;
+    background: var(--ink);
+    display: inline-block;
+  }
+  .key-dot--on { background: var(--gold); }
+
+  @media (max-width: 900px) {
+    .timeline { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .timeline { grid-template-columns: 1fr; }
+    .hero-facts { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+
+  .stack-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .stack-list li {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    border: 1px solid var(--rule-strong);
+    padding: 0.7rem 1.15rem;
+    border-radius: 2px;
+  }
+</style>

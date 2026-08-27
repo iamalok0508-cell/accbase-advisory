@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { industries } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return industries.map((industry) => ({
+    params: { slug: industry.slug },
+    props: { industry },
+  }));
+}
+
+const { industry } = Astro.props;
+---
+<BaseLayout title={`Accounting for ${industry.title.toLowerCase()}`} description={industry.description}>
+  <PageHero eyebrow="Industries" title={industry.title} lede={industry.tagline} />
+
+  <section class="section">
+    <div class="wrap detail">
+      <div class="prose">
+        {industry.body.map((p) => <p>{p}</p>)}
+        <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+      </div>
+      <aside class="points">
+        <h2 class="eyebrow">What we handle here</h2>
+        <ul class="tick-list">
+          {industry.points.map((item) => <li>{item}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .detail { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .points { border-top: 2px solid var(--ink); padding-top: 1.5rem; }
+  .points .eyebrow { margin-bottom: 0.5rem; }
+  @media (max-width: 860px) { .detail { grid-template-columns: 1fr; } }
+</style>
