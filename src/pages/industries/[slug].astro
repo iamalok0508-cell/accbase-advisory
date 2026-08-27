@@ -11,6 +11,7 @@ export function getStaticPaths() {
 }
 
 const { industry } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title={`Accounting for ${industry.title.toLowerCase()}`} description={industry.description}>
   <PageHero eyebrow="Industries" title={industry.title} lede={industry.tagline} />
@@ -19,7 +20,7 @@ const { industry } = Astro.props;
     <div class="wrap detail">
       <div class="prose">
         {industry.body.map((p) => <p>{p}</p>)}
-        <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+        <a class="btn btn--primary" href={`${base}contact/`}>Book a discovery call</a>
       </div>
       <aside class="points">
         <h2 class="eyebrow">What we handle here</h2>

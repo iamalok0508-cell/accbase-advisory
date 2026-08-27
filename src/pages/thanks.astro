@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Thanks — we'll be in touch" description="Your enquiry has reached Accbase Advisory.">
   <PageHero
@@ -12,10 +13,10 @@ import PageHero from '../components/PageHero.astro';
     <div class="wrap prose">
       <p>While you wait, two things worth reading:</p>
       <ul>
-        <li><a href="/insights/offshore-finance-team-questions/">Nine questions to ask before hiring an offshore finance team</a> — including the ones that are awkward for us to answer.</li>
-        <li><a href="/how-we-work/">How we work</a> — what the three-week onboarding actually involves.</li>
+        <li><a href={`${base}insights/offshore-finance-team-questions/`}>Nine questions to ask before hiring an offshore finance team</a> — including the ones that are awkward for us to answer.</li>
+        <li><a href={`${base}how-we-work/`}>How we work</a> — what the three-week onboarding actually involves.</li>
       </ul>
-      <a class="btn btn--ghost" href="/">Back to the homepage</a>
+      <a class="btn btn--ghost" href={base}>Back to the homepage</a>
     </div>
   </section>
 </BaseLayout>

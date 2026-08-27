@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL;
 const ledger = [
   {
     problem: 'Cost of in-house staff',
@@ -108,8 +109,8 @@ const industries = [
         numbers arrive before the decisions do.
       </p>
       <div class="btn-row hero-cta">
-        <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
-        <a class="btn btn--ghost" href="/services/">See what we handle</a>
+        <a class="btn btn--primary" href={`${base}contact/`}>Book a discovery call</a>
+        <a class="btn btn--ghost" href={`${base}services/`}>See what we handle</a>
       </div>
       <dl class="hero-facts">
         <div><dt>Close calendar</dt><dd>Fixed monthly date</dd></div>
@@ -182,12 +183,12 @@ const industries = [
             or take all of them.
           </p>
         </div>
-        <a class="btn btn--ghost" href="/services/">All services</a>
+        <a class="btn btn--ghost" href={`${base}services/`}>All services</a>
       </div>
 
       <div class="grid grid-3">
         {services.map((s) => (
-          <a class="cell cell--link" href={`/services/${s.slug}/`}>
+          <a class="cell cell--link" href={`${base}services/${s.slug}/`}>
             <h3 class="h-card">{s.title}</h3>
             <p>{s.copy}</p>
             <span class="cell-more">Read more</span>
@@ -253,7 +254,7 @@ const industries = [
             discovery call stays with your account afterwards.
           </p>
         </div>
-        <a class="btn btn--ghost" href="/how-we-work/">How we work</a>
+        <a class="btn btn--ghost" href={`${base}how-we-work/`}>How we work</a>
       </div>
 
       <ol class="timeline">
@@ -297,11 +298,11 @@ const industries = [
             can run them.
           </p>
         </div>
-        <a class="btn btn--ghost" href="/industries/">All industries</a>
+        <a class="btn btn--ghost" href={`${base}industries/`}>All industries</a>
       </div>
       <div class="grid grid-2">
         {industries.map(([slug, name]) => (
-          <a class="cell cell--link" href={`/industries/${slug}/`}>
+          <a class="cell cell--link" href={`${base}industries/${slug}/`}>
             <h3 class="h-card">{name}</h3>
             <span class="cell-more">Read more</span>
           </a>

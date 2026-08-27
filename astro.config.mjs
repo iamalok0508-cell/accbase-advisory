@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.accbaseadvisory.com',
+  site: 'https://iamalok0508-cell.github.io',
+  base: '/accbase-advisory/',
   integrations: [sitemap()],
 });

@@ -9,6 +9,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const base = import.meta.env.BASE_URL;
 const fmt = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <BaseLayout title={post.data.title} description={post.data.description} ogType="article">
@@ -30,7 +31,7 @@ const fmt = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month:
         <aside class="article-cta">
           <h2 class="h-card">Books more than a month behind?</h2>
           <p>A 30-minute discovery call, no obligation. We'll tell you honestly whether we're the right fit.</p>
-          <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+          <a class="btn btn--primary" href={`${base}contact/`}>Book a discovery call</a>
         </aside>
       </div>
     </div>

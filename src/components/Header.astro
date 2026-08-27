@@ -1,18 +1,19 @@
 ---
 const path = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
 const nav = [
-  { href: '/services/', label: 'Services' },
-  { href: '/industries/', label: 'Industries' },
-  { href: '/how-we-work/', label: 'How we work' },
-  { href: '/about/', label: 'About' },
-  { href: '/insights/', label: 'Insights' },
+  { href: `${base}services/`, label: 'Services' },
+  { href: `${base}industries/`, label: 'Industries' },
+  { href: `${base}how-we-work/`, label: 'How we work' },
+  { href: `${base}about/`, label: 'About' },
+  { href: `${base}insights/`, label: 'Insights' },
 ];
-const isActive = (href) => path === href || (href !== '/' && path.startsWith(href));
+const isActive = (href) => path === href || (href !== base && path.startsWith(href));
 ---
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="/" aria-label="Accbase Advisory home">
+    <a class="brand" href={base} aria-label="Accbase Advisory home">
       <svg class="brand-mark" viewBox="0 0 48 44" aria-hidden="true" focusable="false">
         <path d="M24 2 L46 42 H36 L24 19 L12 42 H2 Z" fill="#2A1E12" />
         <path d="M15 22 H33 L37 30 H11 Z" fill="#C39A5C" />
@@ -31,7 +32,7 @@ const isActive = (href) => path === href || (href !== '/' && path.startsWith(hre
           {item.label}
         </a>
       ))}
-      <a class="btn btn--primary nav-cta" href="/contact/">Book a discovery call</a>
+      <a class="btn btn--primary nav-cta" href={`${base}contact/`}>Book a discovery call</a>
     </nav>
   </div>
 </header>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.accbaseadvisory.com/sitemap-index.xml
+Sitemap: https://iamalok0508-cell.github.io/accbase-advisory/sitemap-index.xml

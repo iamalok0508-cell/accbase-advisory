@@ -9,6 +9,7 @@ const models = [
   ['03', 'Project based', 'Clean-ups, migrations, backlog closes and audit preparation with a fixed scope.', 'A one-off backlog or an audit deadline.'],
   ['04', 'Monthly retainer', 'Ongoing accounting support at a fixed monthly fee. Our most common engagement.', 'Predictable monthly close and reporting.'],
 ];
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout
   title="Outsourced accounting services for US businesses"
@@ -24,7 +25,7 @@ const models = [
     <div class="wrap">
       <div class="grid grid-2">
         {services.map((s) => (
-          <a class="cell cell--link" href={`/services/${s.slug}/`}>
+          <a class="cell cell--link" href={`${base}services/${s.slug}/`}>
             <h2 class="h-card">{s.title}</h2>
             <p>{s.tagline}</p>
             <span class="cell-more">Read more</span>

@@ -12,6 +12,7 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const others = services.filter((s) => s.slug !== service.slug);
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title={service.title} description={service.description}>
   <PageHero eyebrow="Services" title={service.title} lede={service.tagline} />
@@ -21,7 +22,7 @@ const others = services.filter((s) => s.slug !== service.slug);
       <div class="prose">
         {service.body.map((p) => <p>{p}</p>)}
         <p class="good"><strong>Usually a good fit for:</strong> {service.good}</p>
-        <a class="btn btn--primary" href="/contact/">Book a discovery call</a>
+        <a class="btn btn--primary" href={`${base}contact/`}>Book a discovery call</a>
       </div>
       <aside class="includes">
         <h2 class="eyebrow">What's included</h2>
@@ -37,7 +38,7 @@ const others = services.filter((s) => s.slug !== service.slug);
       <div class="section-head"><div><h2 class="h-section">Other services</h2></div></div>
       <div class="grid grid-2">
         {others.map((s) => (
-          <a class="cell cell--link" href={`/services/${s.slug}/`}>
+          <a class="cell cell--link" href={`${base}services/${s.slug}/`}>
             <h3 class="h-card">{s.title}</h3>
             <p>{s.tagline}</p>
           </a>
