@@ -23,7 +23,7 @@ npm run build      # outputs to dist/
 
 3. **Point the domain.** Vercel → Project → Settings → Domains → add `accbaseadvisory.com` and `www.accbaseadvisory.com`. Vercel shows you the exact A record and CNAME to set at your registrar. HTTPS is automatic.
 
-4. **Activate the contact form.** The form posts to FormSubmit, which needs no account or API key. The first real submission triggers a one-time confirmation email to `info@accbaseadvisory.com` — click the link in it once, and every submission after that arrives as email automatically. `/thanks/` is the confirmation page it redirects to.
+4. **Activate the contact form.** The form posts to FormSubmit, which needs no account or API key. The first real submission triggers a one-time confirmation email to `nithya@accbaseadvisory.com` — click the link in it once, and every submission after that arrives as email automatically. `/thanks/` is the confirmation page it redirects to.
 
    If you would rather have submissions land somewhere structured, Formspree or Web3Forms both work with a similar one-line swap of the form's `action` and hidden fields.
 
