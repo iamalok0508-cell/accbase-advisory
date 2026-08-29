@@ -6,7 +6,13 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('insights', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+const [featured, ...rest] = posts;
+
 const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const readingTime = (post) => {
+  const words = post.body?.split(/\s+/).length ?? 0;
+  return `${Math.max(1, Math.round(words / 200))} min read`;
+};
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout
@@ -16,52 +22,112 @@ const base = import.meta.env.BASE_URL;
   <PageHero
     eyebrow="Insights"
     title="Notes from inside other people's books."
-    lede="Practical writing on close processes, reporting and what actually goes wrong in a growing finance function."
+    lede="A blog and insights hub: practical writing on close processes, reporting and what actually goes wrong in a growing finance function."
   />
   <section class="section">
     <div class="wrap">
       {posts.length === 0 ? (
         <p class="empty">No articles published yet. The first one is being written.</p>
       ) : (
-        <ul class="post-list">
-          {posts.map((post) => (
-            <li class="post-item">
-              <a href={`${base}insights/${post.id}/`}>
-                <div class="post-meta">
-                  <span class="marker">{post.data.category}</span>
-                  <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
-                </div>
-                <div>
-                  <h2 class="h-card post-title">{post.data.title}</h2>
+        <>
+          <a class="featured" href={`${base}insights/${featured.id}/`}>
+            <span class="marker featured-marker">Latest</span>
+            <div class="featured-meta">
+              <span class="tag">{featured.data.category}</span>
+              <time datetime={featured.data.date.toISOString()}>{fmt(featured.data.date)}</time>
+              <span aria-hidden="true">&middot;</span>
+              <span>{readingTime(featured)}</span>
+            </div>
+            <h2 class="h-section featured-title">{featured.data.title}</h2>
+            <p class="featured-desc">{featured.data.description}</p>
+            <span class="cell-more">Read the article</span>
+          </a>
+
+          {rest.length > 0 && (
+            <div class="post-grid">
+              {rest.map((post) => (
+                <a class="post-card" href={`${base}insights/${post.id}/`}>
+                  <div class="post-meta">
+                    <span class="tag">{post.data.category}</span>
+                    <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+                  </div>
+                  <h3 class="h-card post-title">{post.data.title}</h3>
                   <p>{post.data.description}</p>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+                  <span class="post-foot">
+                    <span class="cell-more">Read more</span>
+                    <span class="reading-time">{readingTime(post)}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .post-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
-  .post-item { border-bottom: 1px solid var(--rule); }
-  .post-item a {
-    display: grid;
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
-    padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
-    text-decoration: none;
-  }
-  .post-item a:hover .post-title { color: var(--bronze); }
-  .post-meta { display: flex; flex-direction: column; gap: 0.5rem; }
-  .post-meta time { font-size: 0.8125rem; opacity: 0.75; }
-  .post-item p { margin: 0.6rem 0 0; max-width: 62ch; }
-  .post-title { transition: color 140ms ease; }
   .empty { font-size: 1.0625rem; }
-  @media (max-width: 700px) {
-    .post-item a { grid-template-columns: 1fr; gap: 0.75rem; }
-    .post-meta { flex-direction: row; align-items: baseline; gap: 1rem; }
+
+  .featured {
+    display: block;
+    text-decoration: none;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    background: var(--sand);
+    border-left: 3px solid var(--gold);
   }
+  .featured-marker {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    color: var(--bronze);
+  }
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8125rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+  .tag {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bronze);
+  }
+  .featured-title { max-width: 26ch; transition: color 140ms ease; }
+  .featured:hover .featured-title { color: var(--bronze); }
+  .featured-desc { margin: 1rem 0 0; max-width: 62ch; }
+  .featured .cell-more { display: inline-block; margin-top: 1.5rem; }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    border-top: 1px solid var(--rule-strong);
+    padding-top: clamp(2rem, 4vw, 2.5rem);
+  }
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 1.75rem;
+    border: 1px solid var(--rule);
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+  .post-card:hover { background: var(--sand); border-color: var(--rule-strong); }
+  .post-meta { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; font-size: 0.8125rem; opacity: 0.75; }
+  .post-title { transition: color 140ms ease; }
+  .post-card:hover .post-title { color: var(--bronze); }
+  .post-card p { margin: 0.6rem 0 0; flex-grow: 1; }
+  .post-foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  .reading-time { font-size: 0.8125rem; opacity: 0.65; }
 </style>
