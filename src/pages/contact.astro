@@ -15,12 +15,12 @@ const thanksUrl = new URL(`${import.meta.env.BASE_URL}thanks/`, Astro.site).href
 
   <section class="section">
     <div class="wrap contact-grid">
-      <form class="contact-form" action="https://formsubmit.co/nithya@accbaseadvisory.com" method="POST">
-        <input type="hidden" name="_subject" value="New enquiry from accbaseadvisory.com" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value={thanksUrl} />
-        <p class="hp"><label>Don't fill this in <input name="_honey" tabindex="-1" autocomplete="off" /></label></p>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="6ae8ac7a-f53e-4eb9-80c8-93f5995d4e94" />
+        <input type="hidden" name="subject" value="New enquiry from accbaseadvisory.com" />
+        <input type="hidden" name="from_name" value="Accbase Advisory website" />
+        <input type="hidden" name="redirect" value={thanksUrl} />
+        <p class="hp"><label>Don't fill this in <input name="botcheck" tabindex="-1" autocomplete="off" /></label></p>
 
         <div class="field-row">
           <div class="field">
