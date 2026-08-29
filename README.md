@@ -23,9 +23,9 @@ npm run build      # outputs to dist/
 
 3. **Point the domain.** Vercel → Project → Settings → Domains → add `accbaseadvisory.com` and `www.accbaseadvisory.com`. Vercel shows you the exact A record and CNAME to set at your registrar. HTTPS is automatic.
 
-4. **Turn on the contact form.** The form posts to Web3Forms, which works on any host and is free. Go to web3forms.com, enter `info@accbaseadvisory.com`, and it emails you an access key. Paste it into `src/pages/contact.astro` replacing `YOUR-WEB3FORMS-ACCESS-KEY`. Submissions then arrive as email, and `/thanks/` is the confirmation page.
+4. **Activate the contact form.** The form posts to FormSubmit, which needs no account or API key. The first real submission triggers a one-time confirmation email to `info@accbaseadvisory.com` — click the link in it once, and every submission after that arrives as email automatically. `/thanks/` is the confirmation page it redirects to.
 
-   If you would rather have the submissions land somewhere structured, Formspree gives you a dashboard on a paid tier. Same one-line swap.
+   If you would rather have submissions land somewhere structured, Formspree or Web3Forms both work with a similar one-line swap of the form's `action` and hidden fields.
 
 5. **Enable the admin.** Sveltia CMS talks to GitHub directly, so it needs a GitHub OAuth app plus a tiny auth endpoint:
 
