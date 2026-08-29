@@ -14,10 +14,7 @@ const isActive = (href) => path === href || (href !== base && path.startsWith(hr
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href={base} aria-label="Accbase Advisory home">
-      <svg class="brand-mark" viewBox="0 0 48 44" aria-hidden="true" focusable="false">
-        <path d="M24 2 L46 42 H36 L24 19 L12 42 H2 Z" fill="#2A1E12" />
-        <path d="M15 22 H33 L37 30 H11 Z" fill="#C39A5C" />
-      </svg>
+      <img class="brand-mark" src={`${base}logo-mark.png`} alt="" width="171" height="152" />
       <span class="brand-name">Accbase Advisory</span>
     </a>
 
