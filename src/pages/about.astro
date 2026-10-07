@@ -2,16 +2,24 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
-const founders = [
+const partners = [
   {
-    name: 'Founder name',
-    role: 'Co-founder — Accounting & Operations',
-    bio: 'Two lines: qualification, years in practice, and the engagements you have led.',
+    name: 'Nithyashree S',
+    credential: 'FCA',
+    role: 'Partner — Accounting & Operations',
+    bio: 'A Chartered Accountant with experience across multiple industries, including global operations and cash management. At Accbase, she leads day-to-day accounting delivery — bookkeeping, reconciliations and the month-end close — so clients get accurate books on a fixed calendar.',
   },
   {
-    name: 'Founder name',
-    role: 'Co-founder — Reporting & Advisory',
-    bio: 'Two lines: qualification, years in practice, and the engagements you have led.',
+    name: 'Alok Sharma',
+    credential: 'CA',
+    role: 'Partner — Advisory & FP&A',
+    bio: 'A Chartered Accountant focused on management reporting and financial planning. At Accbase, he leads advisory work — budgeting, forecasting, cash-flow planning and MIS — and works with each client to scope the right engagement as their business grows.',
+  },
+  {
+    name: 'Chandra Mouli',
+    credential: 'CA, CMA',
+    role: 'Partner — Audit, Controls & Compliance',
+    bio: 'A Chartered Accountant and Cost & Management Accountant with experience across statutory audit, taxation, record-to-report operations, revenue recognition and international reporting standards. At Accbase, he helps businesses maintain accurate books, strengthen internal controls and build reliable financial reporting systems.',
   },
 ];
 
@@ -23,12 +31,12 @@ const values = [
 ---
 <BaseLayout
   title="About Accbase Advisory"
-  description="Accbase Advisory is an offshore accounting and financial advisory firm helping US businesses run accurate books, report on time, and scale their finance function without scaling headcount."
+  description="Accbase Advisory is an offshore accounting and financial advisory firm helping growing businesses run accurate books, report on time, and scale their finance function without scaling headcount."
 >
   <PageHero
     eyebrow="About"
     title="An offshore finance team built to work like an in-house one."
-    lede="Accbase Advisory helps US businesses run accurate books, report on time, and scale their finance function without scaling headcount."
+    lede="Accbase Advisory helps growing businesses run accurate books, report on time, and scale their finance function without scaling headcount."
   />
 
   <section class="section">
@@ -43,16 +51,14 @@ const values = [
 
   <section class="section section--sand">
     <div class="wrap">
-      <div class="section-head"><div><p class="eyebrow">Meet the founders</p><h2 class="h-section">Who you'll be working with</h2></div></div>
-      <div class="grid grid-2">
-        {founders.map((f) => (
-          <div class="cell founder">
-            <div class="founder-photo" aria-hidden="true"></div>
-            <div>
-              <h3 class="h-card">{f.name}</h3>
-              <p class="founder-role">{f.role}</p>
-              <p>{f.bio}</p>
-            </div>
+      <div class="section-head"><div><p class="eyebrow">Meet the partners</p><h2 class="h-section">Who you'll be working with</h2></div></div>
+      <div class="grid grid-3">
+        {partners.map((p) => (
+          <div class="cell partner">
+            <h3 class="h-card">{p.name}</h3>
+            <p class="partner-credential">{p.credential}</p>
+            <p class="partner-role">{p.role}</p>
+            <p>{p.bio}</p>
           </div>
         ))}
       </div>
@@ -79,11 +85,13 @@ const values = [
     color: var(--ink); max-width: 30ch; margin: 0;
     padding-left: clamp(1rem, 3vw, 2.5rem); border-left: 2px solid var(--gold);
   }
-  .founder { flex-direction: row; gap: 1.5rem; align-items: flex-start; }
-  .founder-photo {
-    width: 104px; flex: 0 0 104px; aspect-ratio: 3 / 4;
-    background: var(--paper); border: 1px dashed var(--rule-strong);
+  .partner-credential {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0.5rem 0 0;
   }
-  .founder-role { color: var(--bronze); font-weight: 600; font-size: 0.875rem; margin: 0.35rem 0 0.75rem; }
-  @media (max-width: 520px) { .founder { flex-direction: column; } }
+  .partner-role { color: var(--bronze); font-weight: 600; font-size: 0.875rem; margin: 0.2rem 0 0.9rem; }
 </style>

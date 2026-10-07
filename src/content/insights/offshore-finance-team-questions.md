@@ -35,7 +35,7 @@ Specifically: who has access, at what permission level, whether data is download
 
 ## 7. What is explicitly out of scope?
 
-Most disputes come from an unstated assumption. Offshore accounting firms generally do not file US tax returns or provide attest services; those stay with your CPA. Get the boundary written down.
+Most disputes come from an unstated assumption. Offshore accounting firms generally do not file tax returns or provide attest services; those stay with your accountant or tax advisor. Get the boundary written down.
 
 ## 8. How do you handle a backlog?
 

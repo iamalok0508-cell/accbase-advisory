@@ -4,7 +4,7 @@ export const services = [
     title: 'Accounting & bookkeeping',
     tagline: 'Clean books, reconciled and closed on a fixed date.',
     description:
-      'Outsourced bookkeeping and month-end close for US businesses. Daily transaction processing, AP and AR, reconciliations and general ledger maintenance in QuickBooks, Xero or NetSuite.',
+      'Outsourced bookkeeping and month-end close for growing businesses. Daily transaction processing, AP and AR, reconciliations and general ledger maintenance in QuickBooks, Xero or NetSuite.',
     body: [
       'Most businesses do not come to us because bookkeeping is hard. They come because it is late. Transactions pile up, reconciliations slip, and by the time the books are current the quarter is over.',
       'We take the recurring work off your calendar and put it on ours. Transactions are categorised as they arrive rather than in a monthly scramble, bank and credit card accounts are reconciled continuously, and the close runs to a date you can plan around.',
@@ -27,7 +27,7 @@ export const services = [
     title: 'Financial reporting',
     tagline: 'A reporting pack that arrives before the decision, not after it.',
     description:
-      'Monthly financial statements, MIS packs, cash-flow reporting and KPI dashboards for US businesses, delivered on a fixed close calendar.',
+      'Monthly financial statements, MIS packs, cash-flow reporting and KPI dashboards for growing businesses, delivered on a fixed close calendar.',
     body: [
       'A reporting pack is only useful if it lands while there is still something to do about it. We agree a close date up front and deliver against it, every month, without you having to ask.',
       'The pack itself is built around what you actually decide on. For some clients that is a three-statement view and a variance commentary. For others it is a one-page dashboard with the four metrics the board cares about. We build to the second version more often than the first.',
@@ -50,11 +50,11 @@ export const services = [
     title: 'Payroll & compliance',
     tagline: 'Filings, documentation and audit requests handled year-round.',
     description:
-      'Payroll processing, compliance reporting, financial documentation and audit support for US businesses, coordinated with your CPA and payroll provider.',
+      'Payroll processing, compliance reporting, financial documentation and audit support for growing businesses, coordinated with your accountant and payroll provider.',
     body: [
       'Compliance work goes wrong the same way every time: it gets handled reactively. A filing deadline appears, the auditor asks for a schedule nobody prepared, and the finance function spends a week reconstructing history.',
       'We run this work as a calendar rather than a series of emergencies. Documentation is prepared as transactions happen, schedules are maintained through the year, and audit requests are answered from records that already exist.',
-      'We work alongside your CPA and your payroll provider rather than replacing them. Your tax filings stay with your US tax professional; we prepare the underlying records they depend on.',
+      'We work alongside your accountant and your payroll provider rather than replacing them. Your tax filings stay with your tax professional; we prepare the underlying records they depend on.',
     ],
     includes: [
       'Payroll processing and reconciliation via Gusto, ADP or similar',
@@ -64,7 +64,7 @@ export const services = [
       'Compliance reporting and filing calendars',
       'Vendor documentation and 1099 preparation support',
       'Internal control documentation',
-      'Working papers for your CPA',
+      'Working papers for your accountant',
     ],
     good: 'A business heading into its first audit, or one that dreads the request list.',
   },
@@ -73,7 +73,7 @@ export const services = [
     title: 'Advisory & FP&A',
     tagline: 'The analysis behind the decision, not just the record of it.',
     description:
-      'Budgeting, forecasting, cash-flow planning and financial analysis for US businesses that need FP&A capability without a full-time hire.',
+      'Budgeting, forecasting, cash-flow planning and financial analysis for growing businesses that need FP&A capability without a full-time hire.',
     body: [
       'Bookkeeping tells you what happened. FP&A tells you what is likely to happen and what you can do about it. Most businesses need the second long before they can justify hiring for it.',
       'We build and maintain the models: an annual budget you can actually track against, a rolling forecast that updates with the close, and cash-flow planning that shows you the runway question before it becomes urgent.',
@@ -96,7 +96,7 @@ export const services = [
     title: 'Offshore finance teams',
     tagline: 'A finance team that works as part of yours.',
     description:
-      'Dedicated offshore finance teams for US businesses. Qualified accountants embedded in your finance operation, working your hours and your processes.',
+      'Dedicated offshore finance teams for growing businesses. Qualified accountants embedded in your finance operation, working your hours and your processes.',
     body: [
       'Some businesses do not want a service. They want people: named individuals who show up in the same Slack channel every day, learn the quirks of the business, and take ownership of a function.',
       'That is what this is. A dedicated accountant or a small team who work exclusively on your account, in your systems, during hours that overlap your working day. They join your standups if you want them to.',
@@ -104,7 +104,7 @@ export const services = [
     ],
     includes: [
       'Dedicated accountants working exclusively on your account',
-      'Working hours overlapping the US business day',
+      'Working hours overlapping your business day',
       'Recruitment, training and replacement handled by us',
       'Documented process manuals for every routine',
       'Direct access via your Slack, Teams or email',
